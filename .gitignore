@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Anaconda
+.ipynb_checkpoints/
+
+# API KEYS
+twitter_keys.py
