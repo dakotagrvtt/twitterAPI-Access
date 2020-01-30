@@ -130,6 +130,3 @@ dmypy.json
 
 # Anaconda
 .ipynb_checkpoints/
-
-# API KEYS
-twitter_keys.py
