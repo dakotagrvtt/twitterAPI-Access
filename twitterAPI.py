@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
 """
 Created on Thu Jan 30 13:02:52 2020
-
-@author: Dakota Gravitt - s523439
+@author: Dakota Gravitt
 """
 
 # twitter access

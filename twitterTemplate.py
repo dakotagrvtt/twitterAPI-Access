@@ -1,9 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jan 30 13:07:07 2020
-
-@author: s523439
-"""
+''' We will not need to import tweepy or pickle yet
+ since there is no custom code that is not already in the API code
+'''
 
 #import tweepy
 #import pickle
