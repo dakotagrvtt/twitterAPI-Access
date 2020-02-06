@@ -10,20 +10,22 @@ Created on Thu Jan 30 13:07:07 2020
 from twitterAPI import setupAPI, writeTweets, loadTweets, getPublicTweets
 
 # always get API first
+# grabs full text of tweets
 api = setupAPI()
 
 # define for your user and file names
 user = 'jack'
-file = '___.pkl'
+files = 'jack.pkl'
 
 # get tweets from a user
-public_tweets = getPublicTweets(user, api)
+# grabbing only one page (or 20 full tweets)
+public_tweets = getPublicTweets(user, api, 1)
 
 # write tweets to file
-writeTweets(file, public_tweets)
+writeTweets(files, public_tweets)
 
 # load file
-loadTweets(file)
+loadTweets(files)
 #print(public_tweets)
 
 tweet_texts = [status.text for status in public_tweets]
