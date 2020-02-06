@@ -22,9 +22,15 @@ def writeTweets(tweets_file, public_tweets):
         pickle.dump(public_tweets, f)
 
 def loadTweets(tweets_file):
+    public_tweets = []
     with open(tweets_file, 'rb') as f:
         public_tweets = pickle.load(f)
+    return public_tweets
 
 # returns public tweets as a list
-def getPublicTweets(user, api):
-    return api.user_timeline(user)
+def getPublicTweets(user, api, numOfPages):
+    public_tweets = []
+    for status in tweepy.cursor(api.user_timeline, id=user).pages(numOfPages):
+        tweets.extend(page)
+    return public_tweets
+
