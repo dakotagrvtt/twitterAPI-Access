@@ -30,5 +30,7 @@ def writeTweets(tweets_file, public_tweets):
 
 # loads as list
 def loadTweets(tweets_file):
+    public_tweets = []
     with open(tweets_file, 'rb') as f:
-        pickle.load(f)
+       public_tweets = pickle.load(f)
+    return public_tweets
