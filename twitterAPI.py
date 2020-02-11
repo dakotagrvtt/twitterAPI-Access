@@ -11,14 +11,14 @@ from twitter_keys import API_KEY, API_SECRET, ACCESS_TOKEN, ACCESS_SECRET
 def setupAPI():
     auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
     auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-    return tweepy.API(auth, tweet_mode="extended")
+    return tweepy.API(auth)
 
 # returns public tweets as a list
 def getPublicTweets(user, api, numOfPages):
-    public_tweets = []
-    for status in tweepy.cursor(api.user_timeline, id=user).pages(numOfPages):
+    tweets = []
+    for page in tweepy.Cursor(api.user_timeline, id=user, tweet_mode="extended").pages(numOfPages):
         tweets.extend(page)
-    return public_tweets
+    return tweets
 
 # file I/O functions
 import pickle
@@ -32,4 +32,3 @@ def writeTweets(tweets_file, public_tweets):
 def loadTweets(tweets_file):
     with open(tweets_file, 'rb') as f:
         pickle.load(f)
-
