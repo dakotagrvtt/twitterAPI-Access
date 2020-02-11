@@ -13,10 +13,11 @@ api = setupAPI()
 # define for your user and file names
 user = 'jack'
 files = 'jack.pkl'
+numOfPages = 1
 
 # get tweets from a user
 # grabbing only one page (or 20 full tweets)
-public_tweets = getPublicTweets(user, api, 1)
+public_tweets = getPublicTweets(user, api, numOfPages)
 
 # write tweets to file
 writeTweets(files, public_tweets)
@@ -25,5 +26,5 @@ writeTweets(files, public_tweets)
 loadTweets(files)
 #print(public_tweets)
 
-tweet_texts = [status.text for status in public_tweets]
+tweet_texts = [status.full_text for status in public_tweets]
 print(tweet_texts)
