@@ -7,7 +7,7 @@ Created on Thu Jan 30 13:02:52 2020
 import tweepy
 from twitter_keys import API_KEY, API_SECRET, ACCESS_TOKEN, ACCESS_SECRET
 
-# get full text of tweet along with your API
+# access API with your keys
 def setupAPI():
     auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
     auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
@@ -34,3 +34,12 @@ def loadTweets(tweets_file):
     with open(tweets_file, 'rb') as f:
        public_tweets = pickle.load(f)
     return public_tweets
+
+def grabTextTweets(api, user, fileName, numOfPages):
+    # grab tweets based on above parameters
+    public_tweets = getPublicTweets(user, api, numOfPages)
+    # write tweets to a file
+    writeTweets(fileName, public_tweets)
+    # load the text of each tweet only
+    tweet_texts = [status.full_text for status in public_tweets]
+    return tweet_texts
