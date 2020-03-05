@@ -58,9 +58,8 @@ def loadNoRetweets(tweets_file):
 
 import time
 import datetime
-
-# get many users' tweets at once from a list
-def mass_statusGrab(users_list, api, numOfPages):
+# get many users' tweets at once from a list of users
+def mass_status_grab(users_list, api, numOfPages):
     start_all = time.time()
     statuses = []
     for user in users_list:
@@ -71,6 +70,7 @@ def mass_statusGrab(users_list, api, numOfPages):
 
         # get tweets, store them in a binary file named after the user
         statuses = getPublicTweets(user, api, numOfPages)
+        user = str(user) # convert user var into a string in case an integer id was passed instead of a screen name
         file_name = user + '.pkl'
         writeTweets(file_name, statuses) # pickle statuses before everything breaks and we must commit seppuku
 
