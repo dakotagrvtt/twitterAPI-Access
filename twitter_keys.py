@@ -1,6 +1,6 @@
 # Replace constants with your own dev keys for API access
 
-import tweepy
+#import tweepy
 
 API_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxx'
 API_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
