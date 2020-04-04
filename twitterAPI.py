@@ -2,7 +2,6 @@
 Created on Thu Jan 30 13:02:52 2020
 @author: Dakota Gravitt
 """
-
 # twitter access
 import tweepy
 from twitter_keys import API_KEY, API_SECRET, ACCESS_TOKEN, ACCESS_SECRET
@@ -28,7 +27,7 @@ def writeTweets(tweets_file, public_tweets):
     with open(tweets_file, 'wb') as f:
         pickle.dump(public_tweets, f)
 
-# loads as list
+# loads pickled tweets file as list
 def loadTweets(tweets_file):
     public_tweets = []
     with open(tweets_file, 'rb') as f:
@@ -49,11 +48,10 @@ def grabTextTweets(api, user, fileName, numOfPages):
 def loadNoRetweets(tweets_file):
     public_tweets = loadTweets(tweets_file)
     # make list of true and false for each tweet
-    retweeted = [status.retweeted for status in public_tweets]
     #print(retweeted) # print in case you would like to see which tweets are retweets
-    for i in range(len(public_tweets)-1):
-        if retweeted == True:
-            public_tweets.remove(public_tweets[i])
+    for status in public_tweets:
+        if status.full_text[2:] != 'RT ':
+            public_tweets.remove(public_tweets[status])
     return public_tweets
 
 import time
